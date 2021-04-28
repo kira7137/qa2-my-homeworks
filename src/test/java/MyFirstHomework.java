@@ -54,12 +54,13 @@ public class MyFirstHomework {
         browserWindow.get("http://tvnet.lv");
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
         String text = browserWindow.findElement(FIRST_ARTICLE_HEADER).getText();
-        String sign = "("
-        if (FIRST_ARTICLE_HEADER == sign); {
-            System.out.println("Remove comment"); }
-        else (FIRST_ARTICLE_HEADER != sign); {
-            System.out.println("Article heading is: " + text);
-        }
+
+       // String sign = "("
+       // if (FIRST_ARTICLE_HEADER == sign); {
+      //      System.out.println("Remove comment"); }
+      //  else (FIRST_ARTICLE_HEADER != sign); {
+      //      System.out.println("Article heading is: " + text);
+       // }
         browserWindow.close();
     }
 
