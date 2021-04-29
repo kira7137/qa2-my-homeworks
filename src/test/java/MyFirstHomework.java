@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import javax.xml.bind.Element;
 import javax.xml.soap.Text;
 import java.awt.*;
+import java.util.Iterator;
 import java.util.List;
 
 public class MyFirstHomework {
@@ -36,10 +37,8 @@ public class MyFirstHomework {
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
         browserWindow.findElement(OPEN_FIRST_ARTICLE).click();
         browserWindow.findElement(OPEN_COMMENT_PAGE).click();
-        browserWindow.findElement(TVNET_LOGO_ALT).click();
-        browserWindow.findElement(LANG_BTN_RUS).click();
 
-        //browserWindow.close();
+        browserWindow.close();
 
     }
 
@@ -54,19 +53,14 @@ public class MyFirstHomework {
         browserWindow.get("http://tvnet.lv");
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
         String text = browserWindow.findElement(FIRST_ARTICLE_HEADER).getText();
+        System.out.println("Article heading is: " + text);
 
-       // String sign = "("
-       // if (FIRST_ARTICLE_HEADER == sign); {
-      //      System.out.println("Remove comment"); }
-      //  else (FIRST_ARTICLE_HEADER != sign); {
-      //      System.out.println("Article heading is: " + text);
-       // }
-        browserWindow.close();
-    }
+        browserWindow.close(); }
+
 
     @Test
     public void fourthHomework() {
-        //распечатать все заголовки статей с главной страницы
+        //распечатать все заголовки статей с главной страницы БЕЗ комментариев
 
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
         WebDriver browserWindow = new ChromeDriver();
@@ -75,14 +69,21 @@ public class MyFirstHomework {
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
 
         List<WebElement> articleName = browserWindow.findElements(ALL_ARTICLE_LOC);
+        String toBeRemoved = "(";
             for (int i = 0; i < articleName.size(); i++) {
                 System.out.println("Article heading: " + articleName.get(i).getText());
-        }
-            //if - else используем , Remove comment
-        //method Replace
-
+                if (articleName.equals(toBeRemoved)) {
+                    System.out.println("Article heading: " + articleName.remove(toBeRemoved));
+                }
+                }
         browserWindow.close();
     }
+
+
+
+        //if - else используем , Remove comment
+        // method Replace
+
     @Test
     public void fifthHomework() {
         //распечатать все заголовки статей с главной страницы + кол-во комментариев
