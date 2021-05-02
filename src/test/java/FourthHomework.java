@@ -21,13 +21,11 @@ public class FourthHomework {
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
 
         List<WebElement> articleName = browserWindow.findElements(ALL_ARTICLE_LOC);
-        String toBeRemoved = "(" + ")";
+
         for (int i = 0; i < articleName.size(); i++) {
-            System.out.println("Article heading: " + articleName.get(i).getText());
-            if (articleName.equals(toBeRemoved)) {
-                System.out.println("Article heading: " + articleName.remove(toBeRemoved));
-            }
+            System.out.println("Article heading: " + articleName.get(i).getText().replaceAll("\\(\\d+\\)", " "));
         }
         browserWindow.close();
     }
+
 }
