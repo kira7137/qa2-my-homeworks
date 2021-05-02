@@ -53,7 +53,7 @@ public class MyFirstHomework {
         browserWindow.get("http://tvnet.lv");
         browserWindow.findElement(ACCEPT_COOKIES_BTN).click();
         String text = browserWindow.findElement(FIRST_ARTICLE_HEADER).getText();
-        System.out.println("Article heading is: " + text);
+        System.out.println("Article heading is: " + text.replaceAll("\\(\\d+\\)", " "));
 
         browserWindow.close(); }
 
