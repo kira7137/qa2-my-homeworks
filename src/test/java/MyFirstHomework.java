@@ -76,13 +76,9 @@ public class MyFirstHomework {
     }
 
 
-
-        //if - else используем , Remove comment
-        // method Replace
-
     @Test
     public void fifthHomework() {
-        //распечатать все заголовки статей с главной страницы + кол-во комментариев
+        //распечатать все заголовки статей с главной страницы + кол-во комментариев + там где нет комментов, поставить (0)
 
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
         WebDriver browserWindow = new ChromeDriver();
@@ -94,7 +90,7 @@ public class MyFirstHomework {
         for (int i = 0; i < articleName.size(); i++) {
             System.out.println("Article heading: " + articleName.get(i).getText());
         }
-        browserWindow.close();
+
 
     }
 
