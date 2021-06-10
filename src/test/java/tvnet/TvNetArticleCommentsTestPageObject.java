@@ -17,7 +17,7 @@ public class TvNetArticleCommentsTestPageObject {
     private WebDriver driver;
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
-    private final int ARTICLE_ID = 4;
+    private final int ARTICLE_ID = 0;
 
     private BaseFunc baseFunc;
 
@@ -31,9 +31,12 @@ public class TvNetArticleCommentsTestPageObject {
 
         HomePage homePage = new HomePage(baseFunc);
         homePage.acceptCookies();
- //       homePage.scrollDown();
+
+//        JavascriptExecutor jse = (JavascriptExecutor) driver;
+//        jse.executeScript("window.scrollBy(0,650)");
 
         String homePageTitle = homePage.getTitle(ARTICLE_ID).replaceAll("\\(\\d+\\)$", "").trim();
+
         int homePageCommentsCount = homePage.getCommentsCount(ARTICLE_ID);
 
         ArticlePage articlePage = homePage.openArticle(ARTICLE_ID);
@@ -49,15 +52,10 @@ public class TvNetArticleCommentsTestPageObject {
 
         CommentPage commentPage = articlePage.openCommentsPage();
 
-       //--------------COMMENTS PAGE--------------------
+        //--------------COMMENTS PAGE--------------------
 
         String commentPageTitle = commentPage.getTitle().replaceAll("\\(\\d+\\)$", "").trim();
         int commentPageCommentsCount = commentPage.getCommentsCount();
-
-//        driver.findElement(ARTICLE_PAGE_COMMENTS).click();
-//
-//        String commentPageTitle = driver.findElement(COMMENT_PAGE_ARTICLE_TITLE).getText().trim();
-//        int commentPageCommentsCount = Integer.parseInt(driver.findElement(COMMENT_PAGE_COMMENTS).getText());
 
         Assertions.assertEquals(articlePageTitle, commentPageTitle, "Error with title");
         Assertions.assertEquals(homePageCommentsCount, commentPageCommentsCount, "Error with comments");
@@ -68,26 +66,5 @@ public class TvNetArticleCommentsTestPageObject {
         baseFunc.closeBrowser();
     }
 
-//    private int removeBrackets(WebElement we) {
-//        String commentsCountText = we.getText();
-//        commentsCountText = commentsCountText.substring(1, commentsCountText.length() - 1);
-//        return Integer.parseInt(commentsCountText);
-//    }
-//
-//    private int getCommentsCount (By locator) {
-//        int commentsCount = 0;
-//        if(!driver.findElements(locator).isEmpty()) {
-//            commentsCount = removeBrackets(driver.findElement(locator));
-//        }
-//        return commentsCount;
-//    }
-//
-//    private int getCommentsCount (WebElement we, By locator) {
-//        int commentsCount = 0;
-//        if(!we.findElements(locator).isEmpty()) {
-//            commentsCount = removeBrackets(we.findElement(locator));
-//        }
-//        return commentsCount;
-//    }
 
 }

@@ -38,7 +38,7 @@ public class TvNetArticleCommentsTest {
         //---------------------HOME PAGE---------------------------------
 
        List<WebElement> articles = driver.findElements(HOME_PAGE_ARTICLE);
-        WebElement article = articles.get(2);
+        WebElement article = articles.get(5);
         String homePageTitle = article.findElement(HOME_PAGE_TITLE).getText().replaceAll("\\(\\d+\\)$", "").trim();
         int homePageCommentsCount = getCommentsCount(article, HOME_PAGE_COMMENTS);
         article.findElement(HOME_PAGE_TITLE).click();
