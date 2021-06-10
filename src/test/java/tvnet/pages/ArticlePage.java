@@ -17,7 +17,7 @@ public class ArticlePage {
 
     public String getTitle() {
         LOGGER.info("Getting article title");
-        return baseFunc.getText(TITLE).trim();
+        return baseFunc.getText(TITLE).replaceAll("\\(\\d+\\)$", "").trim();
     }
 
     public int getCommentsCount() {

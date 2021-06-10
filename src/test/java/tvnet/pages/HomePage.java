@@ -12,7 +12,7 @@ public class HomePage {
     private final By ACCEPT_COOKIES_BTN = By.xpath(".//button[@mode = 'primary']");
     private final By ARTICLE = By.tagName("article"); //для поиска всех статей на стр надо выделять целый БЛОК статьи
     //private final By ARTICLE = By.xpath(".//article[@class = 'list-article']");
-    private final By TITLE = By.xpath(".//div[@class = 'article-content']");
+    private final By TITLE = By.xpath(".//span[@itemprop = 'headline name']");
     private final By COMMENTS = By.xpath(".//span[@class = 'list-article__comment section-font-color']");
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
@@ -27,7 +27,6 @@ public class HomePage {
         baseFunc.click(ACCEPT_COOKIES_BTN);
     }
 
-
     public WebElement getArticleById(int id) {
         LOGGER.info("Getting article Nr. " + (id + 1));
         List<WebElement> articles = baseFunc.findElements(ARTICLE);
@@ -38,7 +37,7 @@ public class HomePage {
 
     public String getTitle(int id) {
         LOGGER.info("Getting title for article Nr.: " + (id + 1));
-        return baseFunc.getText(getArticleById(id), TITLE);
+        return baseFunc.getText(getArticleById(id), TITLE).replaceAll("\\(\\d+\\)$", "").trim();
     }
 
     public int getCommentsCount(int id) {

@@ -16,7 +16,7 @@ public class CommentPage {
 
     public String getTitle() {
         LOGGER.info("Getting article title");
-        return baseFunc.getText(COMMENT_PAGE_ARTICLE_TITLE);
+        return baseFunc.getText(COMMENT_PAGE_ARTICLE_TITLE).replaceAll("\\(\\d+\\)$", "").trim();
     }
 
     public int getCommentsCount() {

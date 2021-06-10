@@ -17,7 +17,7 @@ public class TvNetArticleCommentsTestPageObject {
     private WebDriver driver;
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
-    private final int ARTICLE_ID = 0;
+    private final int ARTICLE_ID = 4;
 
     private BaseFunc baseFunc;
 
@@ -35,7 +35,7 @@ public class TvNetArticleCommentsTestPageObject {
 //        JavascriptExecutor jse = (JavascriptExecutor) driver;
 //        jse.executeScript("window.scrollBy(0,650)");
 
-        String homePageTitle = homePage.getTitle(ARTICLE_ID).replaceAll("\\(\\d+\\)$", "").trim();
+        String homePageTitle = homePage.getTitle(ARTICLE_ID);
 
         int homePageCommentsCount = homePage.getCommentsCount(ARTICLE_ID);
 
@@ -43,7 +43,7 @@ public class TvNetArticleCommentsTestPageObject {
 
         //----------------ARTICLE PAGE---------------------
 
-        String articlePageTitle = articlePage.getTitle().replaceAll("\\(\\d+\\)$", "").trim();
+        String articlePageTitle = articlePage.getTitle();
 
         int articlePageCommentsCount = articlePage.getCommentsCount();
 
@@ -54,7 +54,7 @@ public class TvNetArticleCommentsTestPageObject {
 
         //--------------COMMENTS PAGE--------------------
 
-        String commentPageTitle = commentPage.getTitle().replaceAll("\\(\\d+\\)$", "").trim();
+        String commentPageTitle = commentPage.getTitle();
         int commentPageCommentsCount = commentPage.getCommentsCount();
 
         Assertions.assertEquals(articlePageTitle, commentPageTitle, "Error with title");
