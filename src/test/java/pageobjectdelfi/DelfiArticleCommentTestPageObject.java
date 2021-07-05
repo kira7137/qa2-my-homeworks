@@ -75,6 +75,7 @@ public class DelfiArticleCommentTestPageObject {
 //        //--------------COMMENTS PAGE--------------------
 
         int commentCounts = commentPage.getCommentsCount();
+
         int commentPageCommentsCount = commentPage.getCommentsCount();
 
         String commentPageTitle = commentPage.getTitle();
