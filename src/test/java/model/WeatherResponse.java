@@ -18,26 +18,18 @@ public class WeatherResponse {  //dlja JSON faila
     private long id;
     private String name;
     private int cod;
-    private Weather weather;
-
-//    @JsonProperty("weather")
-//    private List<Weathers> weathers;
-//
-//    public List<Weathers> getWeathers() {
-//        return weathers;
-//    }
-//
-//    public void setWeathers(List<Weathers> weathers) {
-//        this.weathers = weathers;
-//    }
+    @JsonProperty("weather")
+    private List<Weather> weathers;
 
 
-    public Weather getWeather() {
-        return weather;
+    public List<Weather> getWeathers() {
+
+        return weathers;
     }
 
-    public void setWeather(Weather weather) {
-        this.weather = weather;
+    public void setWeathers(List<Weather> weathers) {
+
+        this.weathers = weathers;
     }
 
     public Coord getCoord() {

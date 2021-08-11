@@ -9,11 +9,10 @@ Feature: Testing weather endpoint
       | lon | 145.77 |
       | lat | -16.92 |
 
-    And weather is:
-      | id          | 802                |
-      | main        | "Clouds"           |
-      | description | "scattered clouds" |
-      | icon        | "03n" |
+    And weathers are:
+      | id  | main   | description      | icon |
+      | 802 | Clouds | scattered clouds | 03n  |
+    #2.kak krasivo zaprezentovatj dannie esli budet neskolko objectov
     And base is "stations"
     And main is:
       | temp     | 300.15 |
@@ -21,7 +20,7 @@ Feature: Testing weather endpoint
       | humidity | 74     |
       | temp_min | 300.15 |
       | temp_max | 300.15 |
-    And visibility is 1000
+    And visibility is 10000
     And wind is:
       | speed | 3.6 |
       | deg   | 160 |
@@ -32,7 +31,7 @@ Feature: Testing weather endpoint
       | type    | 1          |
       | id      | 8166       |
       | message | 0.2064     |
-      | country | "AU"       |
+      | country | AU         |
       | sunrise | 1485720272 |
       | sunset  | 1485766550 |
     And id is 2172797

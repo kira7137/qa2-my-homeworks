@@ -1,4 +1,4 @@
-package pageobjectdelfi.pages;
+package pageobject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -64,10 +65,41 @@ public class BaseFunc {         //osnovnoj klass, otvechaushij toljko za rabotu 
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
 
+    public String getText(By parent, By child) {
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parent, child)).getText();
+    }
+
     public void closeBrowser() {
         LOGGER.info("Closing browser window");
         if (driver != null) { //proverka na to chto browser bil otkrit
             driver.close();
         }
+    }
+
+    public WebElement findElement(By locator) {
+        LOGGER.info("Gettng element by locator" + locator);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void select(By dropdown, String text) {
+        LOGGER.info("Selecting " + text + " from dropdown by locator: " + dropdown);
+        Select select = new Select(findElement(dropdown));
+        select.selectByVisibleText(text);
+    }
+
+    public void type(By locator, String text) {
+        LOGGER.info("Typing " + text + "info " + locator);
+        WebElement input = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        input.clear(); //clear- ochistitj ot probelov, udalitj vse chto estj v okne vvoda
+        input.sendKeys(text);
+    }
+
+    public void type(By locator, int text) { //preobrazovanie v String
+        type(locator, String.valueOf(text));
+    }
+
+    public void waitForElementsCountToBeMoreThan(By locator, int count) {
+        LOGGER.info("Waiting for elements count to be " + count);
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
     }
 }
