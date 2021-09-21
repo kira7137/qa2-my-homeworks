@@ -19,14 +19,22 @@ public class SeatsPage {
         this.baseFunc = baseFunc;
     }
 
-    public void selectSeat(int nr) {
+    public SeatsPage selectSeat(int nr) {
         WebElement seat = findSeat(nr);
         Assertions.assertNotNull(seat, "Can't find seat with nr. " + nr);
         baseFunc.click(seat);
+
+        return this;
     }
 
     public int getSeatNr() {
         return Integer.parseInt(StringUtils.substringAfterLast(baseFunc.getText(SEAT_NR), "is: "));
+    }
+
+    public SeatsPage checkIfSelectedSeatIs(int nr) {
+        Assertions.assertEquals(nr, getSeatNr(), "Wrong seat number");
+
+        return this;
     }
 
     public SuccessPage book() {
